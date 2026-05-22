@@ -1,7 +1,7 @@
-package com.zoogest.domain.specification;
+package com.jcaa.usersmanagement.domain.specification;
 
-import com.zoogest.domain.model.Especie;
-import com.zoogest.domain.model.Habitat;
+import com.jcaa.usersmanagement.domain.model.Especie;
+import com.jcaa.usersmanagement.domain.model.Habitat;
 
 /**
  * Specification - Patrón de diseño para reglas de validación complejas

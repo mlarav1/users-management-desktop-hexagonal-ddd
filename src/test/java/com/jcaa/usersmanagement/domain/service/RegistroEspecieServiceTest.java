@@ -1,8 +1,8 @@
-package com.zoogest.domain.service;
+package com.jcaa.usersmanagement.domain.service;
 
-import com.zoogest.domain.model.Especie;
-import com.zoogest.domain.model.NombreCientifico;
-import com.zoogest.domain.service.RegistroEspecieServiceImpl;
+import com.jcaa.usersmanagement.domain.model.Especie;
+import com.jcaa.usersmanagement.domain.model.NombreCientifico;
+import com.jcaa.usersmanagement.domain.service.Impl.RegistroEspecieServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

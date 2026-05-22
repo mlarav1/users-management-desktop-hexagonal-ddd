@@ -1,4 +1,4 @@
-package com.zoogest.domain.exception;
+package com.jcaa.usersmanagement.domain.exception;
 
 
 public class EspecieYaExisteException extends RuntimeException {

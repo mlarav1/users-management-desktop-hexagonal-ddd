@@ -1,4 +1,4 @@
-package com.zoogest.domain.model;
+package com.jcaa.usersmanagement.domain.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

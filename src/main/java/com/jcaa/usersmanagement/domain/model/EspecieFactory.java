@@ -1,4 +1,4 @@
-package com.zoogest.domain.model;
+package com.jcaa.usersmanagement.domain.model;
 
 /**
  * Factory para la creación de Especies

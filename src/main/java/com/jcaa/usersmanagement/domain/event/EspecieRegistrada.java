@@ -1,6 +1,6 @@
-package com.zoogest.domain.event;
+package com.jcaa.usersmanagement.domain.event;
 
-import com.zoogest.domain.model.EspecieId;
+import com.jcaa.usersmanagement.domain.model.EspecieId;
 import java.time.LocalDateTime;
 
 /**
