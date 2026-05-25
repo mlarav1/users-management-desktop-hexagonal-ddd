@@ -7,10 +7,14 @@ import com.jcaa.usersmanagement.domain.model.EspecieId;
 public class EspecieApplicationMapper {
 
     public static Especie toDomain(CreateEspecieCommand command) {
-        return Especie.crear(
+        Especie especie = Especie.crear(
             EspecieId.generar(),
             command.nombreCientifico(),
             command.nombreEspañol()
         );
+        if (command.descripcion() != null && !command.descripcion().isBlank()) {
+            especie.actualizarDescripcion(command.descripcion());
+        }
+        return especie;
     }
 }
