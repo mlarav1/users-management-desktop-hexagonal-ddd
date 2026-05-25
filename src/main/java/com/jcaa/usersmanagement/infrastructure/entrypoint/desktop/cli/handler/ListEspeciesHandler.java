@@ -3,12 +3,13 @@ package com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.cli.handler;
 import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.cli.io.ConsoleIO;
 import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.controller.EspecieController;
 import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.dto.EspecieResponseDto;
+import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.cli.handler.OperationHandler;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public final class ListEspeciesHandler {
+public final class ListEspeciesHandler implements OperationHandler {
 
     private final EspecieController especieController;
     private final ConsoleIO consoleIO;
