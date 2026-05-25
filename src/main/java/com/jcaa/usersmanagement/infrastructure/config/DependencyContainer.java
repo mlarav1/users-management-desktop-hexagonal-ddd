@@ -19,6 +19,18 @@ import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.Databa
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.DatabaseConnectionFactory;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.repository.UserRepositoryMySQL;
 import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.controller.UserController;
+import com.jcaa.usersmanagement.application.port.in.CreateEspecieUseCase;
+import com.jcaa.usersmanagement.application.port.in.DeleteEspecieUseCase;
+import com.jcaa.usersmanagement.application.port.in.GetAllEspeciesUseCase;
+import com.jcaa.usersmanagement.application.port.in.GetEspecieByIdUseCase;
+import com.jcaa.usersmanagement.application.port.in.UpdateEspecieUseCase;
+import com.jcaa.usersmanagement.application.service.CreateEspecieService;
+import com.jcaa.usersmanagement.application.service.DeleteEspecieService;
+import com.jcaa.usersmanagement.application.service.GetAllEspeciesService;
+import com.jcaa.usersmanagement.application.service.GetEspecieByIdService;
+import com.jcaa.usersmanagement.application.service.UpdateEspecieService;
+import com.jcaa.usersmanagement.infrastructure.adapter.persistence.repository.EspecieRepositoryMySQL;
+import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.controller.EspecieController;
 
 import java.sql.Connection;
 import jakarta.validation.Validator;
@@ -39,6 +51,7 @@ public final class DependencyContainer {
   private static final String SMTP_FROM_NAME = "smtp.from.name";
 
   private final UserController userController;
+  private final EspecieController especieController;
 
   public DependencyContainer() {
     final AppProperties properties = new AppProperties();
@@ -71,11 +84,29 @@ public final class DependencyContainer {
             getUserByIdUseCase,
             getAllUsersUseCase,
             loginUseCase);
+            final EspecieRepositoryMySQL especieRepository = new EspecieRepositoryMySQL(connection);
+
+final CreateEspecieUseCase createEspecieUseCase = new CreateEspecieService(especieRepository, validator);
+final GetEspecieByIdUseCase getEspecieByIdUseCase = new GetEspecieByIdService(especieRepository, validator);
+final GetAllEspeciesUseCase getAllEspeciesUseCase = new GetAllEspeciesService(especieRepository);
+final UpdateEspecieUseCase updateEspecieUseCase = new UpdateEspecieService(especieRepository, especieRepository, validator);
+final DeleteEspecieUseCase deleteEspecieUseCase = new DeleteEspecieService(especieRepository, especieRepository, validator);
+
+this.especieController = new EspecieController(
+    createEspecieUseCase,
+    updateEspecieUseCase,
+    deleteEspecieUseCase,
+    getEspecieByIdUseCase,
+    getAllEspeciesUseCase);
   }
 
   public UserController userController() {
     return userController;
   }
+
+  public EspecieController especieController() {
+    return especieController;
+}
 
   private static Connection buildDatabaseConnection(final AppProperties properties) {
     final DatabaseConfig config =
