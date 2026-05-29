@@ -3,10 +3,12 @@ package com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.controller;
 import com.jcaa.usersmanagement.application.port.in.CreateEspecieUseCase;
 import com.jcaa.usersmanagement.application.port.in.DeleteEspecieUseCase;
 import com.jcaa.usersmanagement.application.port.in.GetAllEspeciesUseCase;
+import com.jcaa.usersmanagement.application.port.in.RegistrarExamenMedicoUseCase;
 import com.jcaa.usersmanagement.application.port.in.GetEspecieByIdUseCase;
 import com.jcaa.usersmanagement.application.port.in.UpdateEspecieUseCase;
 import com.jcaa.usersmanagement.application.service.dto.command.CreateEspecieCommand;
 import com.jcaa.usersmanagement.application.service.dto.command.DeleteEspecieCommand;
+import com.jcaa.usersmanagement.application.service.dto.command.RegistrarExamenMedicoCommand;
 import com.jcaa.usersmanagement.application.service.dto.command.UpdateEspecieCommand;
 import com.jcaa.usersmanagement.application.service.dto.query.GetEspecieByIdQuery;
 import com.jcaa.usersmanagement.domain.model.Especie;
@@ -25,6 +27,7 @@ public final class EspecieController {
     private final DeleteEspecieUseCase deleteEspecieUseCase;
     private final GetEspecieByIdUseCase getEspecieByIdUseCase;
     private final GetAllEspeciesUseCase getAllEspeciesUseCase;
+    private final RegistrarExamenMedicoUseCase registrarExamenUseCase;
 
     public EspecieResponseDto create(
             String nombreCientifico, String nombreEspañol, String descripcion) {
@@ -54,6 +57,18 @@ public final class EspecieController {
 
     public void delete(String id) {
         deleteEspecieUseCase.execute(new DeleteEspecieCommand(id));
+    }
+    public void registrarExamenMedico(
+            Integer idEspecie, 
+            Integer idCuidador, 
+            String diagnostico, 
+            String tratamiento, 
+            String observaciones) {
+        
+        RegistrarExamenMedicoCommand command = new RegistrarExamenMedicoCommand(
+            idEspecie, idCuidador, diagnostico, tratamiento, observaciones);
+        
+        registrarExamenUseCase.execute(command);
     }
 }
 

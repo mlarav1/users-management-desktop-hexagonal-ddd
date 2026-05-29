@@ -19,6 +19,7 @@ public enum MenuOption {
   CREATE_ESPECIE(9, "Registrar especie"),
   UPDATE_ESPECIE(10, "Actualizar especie"),
   DELETE_ESPECIE(11, "Eliminar especie"),
+  REGISTRAR_EXAMEN(12, "Registrar Examen Médico"),
   EXIT(0, "Exit");
 
   private final int number;
