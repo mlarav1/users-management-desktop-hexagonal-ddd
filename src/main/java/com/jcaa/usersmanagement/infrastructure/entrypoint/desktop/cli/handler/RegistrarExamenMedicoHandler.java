@@ -14,7 +14,7 @@ public class RegistrarExamenMedicoHandler implements OperationHandler {
     public void handle() {
         console.println("\n=== Registrar Examen Médico ===");
 
-        Integer idEspecie = console.readInt("ID de la Especie: ");
+        String idEspecie = console.readRequired("ID de la Especie: ");
         Integer idCuidador = console.readInt("ID del Cuidador: ");
         String diagnostico = console.readRequired("Diagnóstico: ");
         String tratamiento = console.readOptional("Tratamiento (opcional): ");
