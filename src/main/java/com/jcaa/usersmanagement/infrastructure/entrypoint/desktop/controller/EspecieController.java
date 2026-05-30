@@ -59,7 +59,7 @@ public final class EspecieController {
         deleteEspecieUseCase.execute(new DeleteEspecieCommand(id));
     }
     public void registrarExamenMedico(
-            Integer idEspecie, 
+            String idEspecie, 
             Integer idCuidador, 
             String diagnostico, 
             String tratamiento, 

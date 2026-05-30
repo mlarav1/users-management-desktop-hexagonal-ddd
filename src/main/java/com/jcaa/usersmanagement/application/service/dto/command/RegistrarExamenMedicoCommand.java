@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive;
 public record RegistrarExamenMedicoCommand(
 
     @NotNull(message = "El id de especie es obligatorio")
-    Integer idEspecie,
+    String idEspecie,
 
     @NotNull(message = "El id de cuidador es obligatorio")
     Integer idCuidador,
