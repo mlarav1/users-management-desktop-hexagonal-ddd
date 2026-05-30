@@ -1,6 +1,7 @@
 package com.jcaa.usersmanagement.application.service.dto.command;
 
 import com.jcaa.usersmanagement.domain.model.NombreCientifico;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
